@@ -29,3 +29,30 @@ function getResult(playerChoice, computerChoice) {
 }
 
 
+function showResult(score, playerChoice, computerChoice) {
+  
+  let result = document.getElementById('result')
+  switch (score) {
+    case -1:
+      result.innerText = `You Lose!`
+      break;
+    case 0:
+      result.innerText = `It's a Draw!`
+      break;
+    case 1:
+      result.innerText = `You Win!`
+      break;
+  }
+
+  let playerScore = document.getElementById('player-score')
+  let hands = document.getElementById('hands')
+  playerScore.innerText = `${Number(playerScore.innerText) + score}`
+    hands.innerText = `👱 ${playerChoice} vs 🤖 ${computerChoice}`
+}
+
+function onClickRPS(playerChoice) {
+  const computerChoice = getComputerChoice()
+  const score = getResult(playerChoice.value, computerChoice)
+  showResult(score, playerChoice.value, computerChoice)
+}
+
